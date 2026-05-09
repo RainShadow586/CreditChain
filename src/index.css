@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 248 80% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 243 52% 21%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 248 80% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 240 77% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 74% 33%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 228 74% 33%;
+    --muted-foreground: 215 25% 63%;
+
+    --accent: 228 74% 33%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 74% 33%;
+    --input: 228 74% 33%;
+    --ring: 240 77% 54%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 243 52% 21%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 240 77% 54%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 74% 33%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 228 74% 33%;
+    --sidebar-ring: 240 77% 54%;
+
+    /* CreditChain Custom Tokens */
+    --cc-deep-black: 248 80% 5%;
+    --cc-dark-navy: 243 52% 21%;
+    --cc-medium-blue: 228 74% 33%;
+    --cc-bright-blue: 240 77% 54%;
+
+    /* Score band colors */
+    --score-poor: 0 84% 60%;
+    --score-fair: 25 95% 53%;
+    --score-good: 48 96% 53%;
+    --score-very-good: 173 80% 40%;
+    --score-excellent: 142 71% 45%;
+
+    /* Status colors */
+    --status-success: 142 71% 45%;
+    --status-locked: 228 74% 33%;
+    --status-slashed: 0 84% 60%;
+    --status-completed: 173 80% 40%;
+
+    /* Provider brand colors */
+    --provider-airtel: 16 100% 50%;
+    --provider-mtn: 48 100% 50%;
+    --provider-zanaco: 216 100% 27%;
+    --provider-fnb: 153 100% 19%;
+    --provider-stanbic: 220 100% 32%;
+
+    /* Shadows & Glows */
+    --shadow-card: 0 4px 24px -4px hsla(240, 77%, 54%, 0.15);
+    --shadow-glow: 0 0 40px hsla(240, 77%, 54%, 0.25);
+
+    --gradient-primary: linear-gradient(135deg, hsl(240 77% 54%) 0%, hsl(243 52% 35%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(248 80% 5%) 0%, hsl(243 52% 14%) 50%, hsl(248 80% 5%) 100%);
+    --gradient-score-arc: conic-gradient(from 180deg, hsl(240 77% 54%), hsl(240 77% 64%), hsl(240 77% 54%));
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Wallet adapter overrides */
+.wallet-adapter-button {
+  background-color: hsl(var(--cc-bright-blue)) !important;
+  border-radius: var(--radius) !important;
+  font-family: inherit !important;
+  font-size: 0.875rem !important;
+  height: 2.75rem !important;
+  padding: 0 1.25rem !important;
+  transition: all 0.2s ease !important;
+}
+.wallet-adapter-button:hover {
+  background-color: hsl(240 77% 48%) !important;
+  box-shadow: 0 0 20px hsla(240, 77%, 54%, 0.3) !important;
+}
+.wallet-adapter-button-trigger {
+  background-color: hsl(var(--cc-bright-blue)) !important;
+}
+.wallet-adapter-modal-wrapper {
+  background-color: hsl(var(--cc-dark-navy)) !important;
+  border: 1px solid hsl(var(--cc-medium-blue)) !important;
+  border-radius: var(--radius) !important;
+}
+.wallet-adapter-modal-button-close {
+  background-color: hsl(var(--cc-medium-blue)) !important;
+}
+.wallet-adapter-modal-list li {
+  background-color: hsl(var(--cc-deep-black)) !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  margin-bottom: 0.25rem !important;
+}
+.wallet-adapter-modal-list li:hover {
+  background-color: hsl(var(--cc-medium-blue)) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--cc-deep-black));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--cc-medium-blue));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--cc-bright-blue));
+}
+
+/* Shimmer animation for skeleton loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--cc-medium-blue)) 25%,
+    hsl(var(--cc-dark-navy)) 50%,
+    hsl(var(--cc-medium-blue)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Score gauge animation */
+@keyframes scoreArc {
+  from { stroke-dashoffset: 283; }
+}
+.score-arc {
+  animation: scoreArc 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 hsla(240, 77%, 54%, 0.4); }
+  50% { box-shadow: 0 0 20px 4px hsla(240, 77%, 54%, 0.2); }
+}
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Progress bar */
+@keyframes progressBar {
+  from { width: 0%; }
+}
+.progress-animate {
+  animation: progressBar 3s ease-in-out forwards;
+}
+
+/* Toast styles */
+.cc-toast-success {
+  background-color: hsl(var(--cc-dark-navy)) !important;
+  border-left: 4px solid hsl(var(--cc-bright-blue)) !important;
+  color: white !important;
+}
+.cc-toast-error {
+  background-color: hsl(var(--cc-dark-navy)) !important;
+  border-left: 4px solid hsl(var(--destructive)) !important;
+  color: white !important;
+}
