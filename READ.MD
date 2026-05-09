@@ -8,8 +8,8 @@
 - *Event:* Dev3pack Hackathon
 - *Team_Name:* Token Bandits
 - *Team_Members:* Daniel Tembo, Jesse Minsula, Raymond Phiri, Jonathan Nyampandu
-- *Demo Video:* [https://youtu.be/your-demo-link](#)
-- *Live Demo:* [https://creditchain.vercel.app](#)
+- *Demo Video:* https://youtu.be/j3a9ouympes
+- *Live Demo:* https://69ff38e8ceae49664065cc0c.vercel.app
 
 ---
 
@@ -102,7 +102,7 @@ node --version
 ### 1. Clone the Repository
 
 bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/creditchain.git
+git clone https://github.com/RainShadow586/creditchain.git
 cd creditchain
 
 
@@ -129,15 +129,7 @@ anchor build
 
 After building, the program ID is generated. Update it in two places:
 
-*programs/creditchain/src/lib.rs:*
-rust
-declare_id!("YOUR_PROGRAM_ID_HERE");
 
-
-*Anchor.toml:*
-toml
-[programs.devnet]
-creditchain = "YOUR_PROGRAM_ID_HERE"
 
 
 ---
@@ -198,7 +190,7 @@ anchor test --provider.cluster devnet
 
 ## 📹 Demo Video
 
-Watch the 3-minute demo: **[https://youtu.be/your-demo-link](#)**
+Watch the 3-minute demo: https://youtu.be/j3a9ouympes
 
 The video covers:
 - Problem statement (30 sec)
